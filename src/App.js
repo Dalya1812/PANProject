@@ -3,20 +3,19 @@ import './App.css';
 import Navbar from './components/navbar/Navbar';
 import Survey from './components/survey/Survey';
 import Home from './pages/Home';
-import Logo from '../src/assets/images/logo.png';
+import Header from './components/header/Header';
 
 function App() {
   return (
     <div className="App">
+    <Header/>
     <Navbar/>
 <BrowserRouter>
   <Routes>
   <Route path='/' element={<Survey/>}/>
- <Route path='/home' element={<Home/>}/>
 </Routes>
 </BrowserRouter>
     </div>
   );
 }
-
 export default App;

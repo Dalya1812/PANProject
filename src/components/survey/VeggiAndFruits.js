@@ -1,6 +1,5 @@
 
 export default function Food() {
 return <div>
-    Food
-</div>
+VegFruitPage</div>
 }
