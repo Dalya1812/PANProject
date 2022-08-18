@@ -1,59 +1,73 @@
-import {useState} from "react";
-import VegFruitPage from "./VeggiAndFruits";
-import BeansCereals from "./BeansCereals";
-import Start from "./Start";
-import './Survey.css'
-import food from '../../assets/images/food.png'
-import startImg from '../../assets/images/start.png'
-import veggiFruits from '../../assets/images/veggiFruit.png'
+import { useState } from "react";
+import Axios from "axios";
+import "./Survey.css";
+import { useEffect } from "react";
+import food from "../../assets/images/food.png";
+import startImg from "../../assets/images/start.png";
+import veggiFruits from "../../assets/images/veggiFruit.png";
+import QuestionPage from "./QuestionPage";
 
-const sections = ["start","VegFruitPage","beansCereals"]
+const sections = ["veg", "beans", "meat", "processed"];
 export default function Survey() {
+  const [showingSection, setShowingSection] = useState(0);
+  const [questions, setQuestions] = useState([]);
 
-const [showingSection,setShowingSection] = useState(0)
+  useEffect(() => {
+    const fetchSurvey = () => {
+      Axios.get("http://localhost:8000/api/survey").then((res) => {
+        setQuestions(res.data);
+      });
+    };
+    fetchSurvey();
+  }, []);
 
-    function getShowingElement() {
-        switch(sections[showingSection]) {
-         case '':
-                return <Start/>
-         case 'start':
-                return <Start/>
-        case 'VegFruitPage':
-            return <VegFruitPage/>
-        case 'beansCereals':
-            return <BeansCereals/>
+  function answerSelected(section, selectedAnswer) {
+    // section
+    console.log(selectedAnswer.points);
+  }
 
-        }
-        return null
-    }
-function nextSection()  {
-    if(showingSection === sections.length-1)
-        return
-    setShowingSection(showingSection+1)
-}
+  function getShowingElement() {
+    if (questions.length < 1) return null;
+    return (
+      <QuestionPage
+        section={sections[showingSection]}
+        questions={questions}
+        answerSelected={answerSelected}
+      />
+    );
+  }
+  function nextSection() {
+    if (showingSection === sections.length - 1) return;
+    setShowingSection(showingSection + 1);
+  }
 
-return <div>
-<div className="time-line">
-    <div className="time-line-container">
-<div className="time-line-circle">
-    {showingSection >=0 && <img src={startImg}/>}
-</div>
-<div className="time-line-circle">
-
-   {showingSection >=1 && <img src={food}/>}
-</div>
-<div className="time-line-circle">
-
-   {showingSection >=2 && <img src={food}/>}
-</div>
+  return (
+    <div>
+      <div className="time-line">
+        <div className="time-line-container">
+          <div className="time-line-circle">
+            {showingSection >= 0 && <img src={startImg} alt="" />}
+          </div>
+          <div className="time-line-circle">
+            {showingSection >= 1 && <img src={food} alt="" />}
+          </div>
+          <div className="time-line-circle">
+            {showingSection >= 2 && <img src={food} alt="" />}
+          </div>
+          <div className="time-line-circle">
+            {showingSection >= 3 && <img src={food} alt="" />}
+          </div>
+          <div className="time-line-circle">
+            {showingSection >= 4 && <img src={food} alt="" />}
+          </div>
         </div>
+
         <hr />
-</div>
-        <div className="showing_section_survey">
-        {getShowingElement()}
-        </div>
-    <button  className="buttonMovingLeft" onClick={nextSection}>Next</button>
-
-</div>
-
+      </div>
+      <div className="showing_section_survey">{getShowingElement()}</div>
+      <button className="buttonMovingLeft" onClick={nextSection}>
+        Next
+      </button>
+    </div>
+  );
 }
