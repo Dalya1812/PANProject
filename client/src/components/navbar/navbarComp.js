@@ -5,9 +5,7 @@ function NavbarComp() {
   return (
     <Navbar className="nav-result">
       <Container>
-        <Navbar.Brand className="nav-brand">
-          <span className="nav-span">ארגון רופאים לתזונה</span>
-        </Navbar.Brand>
+        <Navbar.Brand className="nav-brand"></Navbar.Brand>
       </Container>
     </Navbar>
   );

@@ -54,3 +54,37 @@
   margin-left: 5px;
   font-size: 32px;
 }
+
+
+.button-forward {
+
+  position: absolute;
+  background-color: #eff9f3;
+  height: 50px;
+  width: 50px;
+  border: transparent;
+  border-radius: 100%;
+  bottom: 54px;
+  left: 8.64%;
+}
+
+
+.button-end{
+
+  position: absolute;
+  background-color: #eff9f3;
+  height: 50px;
+  width: 50px;
+  border: transparent;
+  border-radius: 100%;
+  bottom: 54px;
+  left: 8.64%;
+font-family: 'Assistant', sans-serif;
+font-weight: bold;
+width: 60pt;
+height: 30pt;
+border-radius: 25pt 25pt 25pt 25pt;
+font-weight: 49pt;
+font-size: 20pt;
+
+}

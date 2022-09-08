@@ -2,18 +2,26 @@ import { useState } from "react";
 import Axios from "axios";
 import "./Survey.css";
 import { useEffect } from "react";
-import food from "../../assets/images/food.png";
 import startImg from "../../assets/images/start.png";
-import veggiFruits from "../../assets/images/veggiFruit.png";
+import vegIcon from "../../assets/images/carot.png";
+import colaIcon from "../../assets/images/cola.png";
+import beanIcon from "../../assets/images/beans.png";
+import hamburIcon from "../../assets/images/hamburger.png";
 import QuestionPage from "./QuestionPage";
 import ResultComp from "../resultComp";
-const sections = ["start", "veg", "beans", "meat", "processed", "results"];
+import { BsChevronRight } from "react-icons/bs";
+import { BsChevronLeft } from "react-icons/bs";
 
-export default function Survey() {
+const sections = ["start", "veg", "beans", "meat", "processed", "results"];
+export default function Survey(props) {
   const [showingSection, setShowingSection] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [clientResult, setResults] = useState([0, 0, 0, 0]);
   const [queResult, setqueResults] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
+  const [showSurvey, setShowSurvey] = useState(["true"]);
+  const cheakSurv = () => {
+    setShowSurvey(false);
+  };
 
   useEffect(() => {
     const fetchSurvey = () => {
@@ -37,7 +45,6 @@ export default function Survey() {
     getClientSurvey();
   }
 
-  function answerdQues(section, selectedAnswer) {}
   function getShowingElement() {
     if (questions.length < 1) return null;
     return (
@@ -49,7 +56,8 @@ export default function Survey() {
     );
   }
   function nextSection() {
-    if (showingSection === sections.length - 1) return;
+    if (showingSection === sections.length - 1) {
+    }
     setShowingSection(showingSection + 1);
   }
   function prvSection() {
@@ -60,46 +68,50 @@ export default function Survey() {
   function getShowingBackButton() {
     if (showingSection > 0 && showingSection < sections.length - 1) {
       return (
-        <button className="buttonMovingBack" onClick={prvSection}>
-          Back{" "}
+        <button className="button-back" onClick={prvSection}>
+          <BsChevronRight className="arrow" />
         </button>
       );
     }
   }
-
   function getClientSurvey() {
     clientResult[0] = queResult[0] + queResult[1];
     clientResult[1] = queResult[2] + queResult[3];
     clientResult[2] = queResult[4] + queResult[5];
     clientResult[3] = queResult[6] + queResult[7];
-    console.log("om end buttom and i work fine");
-    console.log(clientResult);
+
     return clientResult;
   }
-
+  function myFunction() {
+    cheakSurv();
+    nextSection();
+  }
   function getResults() {
     return clientResult;
   }
   function getShowingEndButton() {
-    console.log(clientResult);
-
     if (showingSection == sections.length - 2) {
       return (
-        <button className="endButton" onClick={nextSection}>
-          סיום{" "}
-        </button>
+        <div>
+          <button className="button-end arrow" onClick={myFunction}>
+            סיום
+          </button>
+        </div>
       );
-    } else if (showingSection == sections.length - 1) {
-      return <ResultComp getClientSurvey={clientResult} />;
     }
   }
 
+  function check() {
+    if (showSurvey === false) {
+      console.log("hwlllooo im in the right place");
+      return <ResultComp getClientSurvey={clientResult} />;
+    }
+  }
   function getShowingNextButton() {
     if (showingSection >= 0 && showingSection < sections.length - 2) {
       return (
-        <button className="buttonMovingForward" onClick={nextSection}>
-          {" "}
-          Next
+        <button className="button-forward" onClick={nextSection}>
+          <BsChevronLeft className="arrow" />
         </button>
       );
     }
@@ -113,20 +125,21 @@ export default function Survey() {
             {showingSection >= 0 && <img src={startImg} alt="" />}
           </div>
           <div className="time-line-circle">
-            {showingSection >= 1 && <img src={food} alt="" />}
+            {showingSection >= 1 && <img src={vegIcon} alt="" />}
           </div>
           <div className="time-line-circle">
-            {showingSection >= 2 && <img src={food} alt="" />}
+            {showingSection >= 2 && <img src={beanIcon} alt="" />}
           </div>
           <div className="time-line-circle">
-            {showingSection >= 3 && <img src={food} alt="" />}
+            {showingSection >= 3 && <img src={hamburIcon} alt="" />}
           </div>
           <div className="time-line-circle">
-            {showingSection >= 4 && <img src={food} alt="" />}
+            {showingSection >= 4 && <img src={colaIcon} alt="" />}
           </div>
         </div>
-        <hr />
+        <hr className="line" />
       </div>
+      {check()}
       <div className="showing_section_survey">{getShowingElement()}</div>
       <div className="buttons">{getShowingNextButton()}</div>
       <div className="buttons">{getShowingEndButton()}</div>
