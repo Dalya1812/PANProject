@@ -8,5 +8,8 @@ app.use(express.json());
 const surveyRouter = require("./routes/survey");
 app.use("/api/survey", surveyRouter);
 
+const foodGroupRouter = require("./routes/foodGroup");
+app.use("/api/foodGroup", foodGroupRouter);
+
 const port = 8000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

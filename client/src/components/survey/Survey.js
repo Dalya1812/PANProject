@@ -16,6 +16,7 @@ const sections = ["start", "veg", "beans", "meat", "processed", "results"];
 export default function Survey(props) {
   const [showingSection, setShowingSection] = useState(0);
   const [questions, setQuestions] = useState([]);
+  const [result, setResult] = useState(false);
   const [clientResult, setResults] = useState([0, 0, 0, 0]);
   const [queResult, setqueResults] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
   const [showSurvey, setShowSurvey] = useState(["true"]);
@@ -63,9 +64,12 @@ export default function Survey(props) {
   function prvSection() {
     if (showingSection === 0) return;
     setShowingSection(showingSection - 1);
+    setResult(false);
   }
 
   function getShowingBackButton() {
+    console.log(showingSection);
+    console.log(sections.length - 1);
     if (showingSection > 0 && showingSection < sections.length - 1) {
       return (
         <button className="button-back" onClick={prvSection}>
@@ -85,6 +89,7 @@ export default function Survey(props) {
   function myFunction() {
     cheakSurv();
     nextSection();
+    setResult(true);
   }
   function getResults() {
     return clientResult;
@@ -103,15 +108,20 @@ export default function Survey(props) {
 
   function check() {
     if (showSurvey === false) {
-      console.log("hwlllooo im in the right place");
-      return <ResultComp getClientSurvey={clientResult} />;
+      return (
+        <ResultComp
+          prvSection={prvSection}
+          setShowSurvey={setShowSurvey}
+          getClientSurvey={clientResult}
+        />
+      );
     }
   }
   function getShowingNextButton() {
     if (showingSection >= 0 && showingSection < sections.length - 2) {
       return (
         <button className="button-forward" onClick={nextSection}>
-          <BsChevronLeft className="arrow" />
+          <BsChevronLeft className="arrowLeft" />
         </button>
       );
     }
@@ -119,31 +129,95 @@ export default function Survey(props) {
 
   return (
     <div>
-      <div className="time-line">
-        <div className="time-line-container">
-          <div className="time-line-circle">
-            {showingSection >= 0 && <img src={startImg} alt="" />}
+      {!result ? (
+        <div className="time-line">
+          <div className="time-line-container">
+            <div className="time-line-circle-start">
+              <BsChevronLeft className="arrow-progress" />
+              {showingSection === 0 && (
+                <div className="start-progress">התחלה</div>
+              )}
+            </div>
+            <div
+              className={
+                showingSection >= 1
+                  ? "time-line-circle"
+                  : "time-line-circle-default"
+              }
+            >
+              {showingSection >= 1 && (
+                <div>
+                  <img className="img-vegIcon" src={vegIcon} alt="" />
+                </div>
+              )}
+              {showingSection === 1 && (
+                <div className="vegAndFruit-progress"> ירקות ופירות</div>
+              )}
+            </div>
+            <div
+              className={
+                showingSection >= 2
+                  ? "time-line-circle"
+                  : "time-line-circle-default"
+              }
+            >
+              {showingSection >= 2 && (
+                <div>
+                  <img className="img-beanIcon" src={beanIcon} alt="" />
+                  {showingSection === 2 && (
+                    <div className="cerealsAndLegumes-progress">
+                      דגנים וקטניות
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            <div
+              className={
+                showingSection >= 3
+                  ? "time-line-circle"
+                  : "time-line-circle-default"
+              }
+            >
+              {showingSection >= 3 && (
+                <div>
+                  <img className="img-hamburIcon" src={hamburIcon} alt="" />
+                  {showingSection === 3 && (
+                    <span className="meet-progress">בשר</span>
+                  )}
+                </div>
+              )}
+            </div>
+            <div
+              className={
+                showingSection >= 4
+                  ? "time-line-circle-end"
+                  : "time-line-circle-endDefault"
+              }
+            >
+              {showingSection >= 4 && (
+                <div>
+                  <img className="img-colaIcon" src={colaIcon} alt="" />
+                  <br />
+                  {showingSection === 4 && (
+                    <span className="processedFood-progress">מזון מעובד</span>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
-          <div className="time-line-circle">
-            {showingSection >= 1 && <img src={vegIcon} alt="" />}
-          </div>
-          <div className="time-line-circle">
-            {showingSection >= 2 && <img src={beanIcon} alt="" />}
-          </div>
-          <div className="time-line-circle">
-            {showingSection >= 3 && <img src={hamburIcon} alt="" />}
-          </div>
-          <div className="time-line-circle">
-            {showingSection >= 4 && <img src={colaIcon} alt="" />}
-          </div>
+          <hr className="line" />
         </div>
-        <hr className="line" />
-      </div>
+      ) : null}
       {check()}
-      <div className="showing_section_survey">{getShowingElement()}</div>
-      <div className="buttons">{getShowingNextButton()}</div>
-      <div className="buttons">{getShowingEndButton()}</div>
-      <div className="buttons">{getShowingBackButton()}</div>
+      {!result ? (
+        <div className="showing_section_survey">
+          <div className="buttons">{getShowingBackButton()}</div>
+          <div className="buttons">{getShowingNextButton()}</div>
+          <div className="buttons">{getShowingEndButton()}</div>
+          {getShowingElement()}
+        </div>
+      ) : null}
     </div>
   );
 }

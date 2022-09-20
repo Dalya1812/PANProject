@@ -6,7 +6,8 @@ export default function Start() {
     <div>
       <div className="textInto">
         {" "}
-        {JSON.stringify(Intrudection.intrudection).slice(1, -1)}{" "}
+        {Intrudection.start} <br />
+        {Intrudection.intrudection}{" "}
       </div>
       <img src={startPic} className="iconFirstPage" alt="" />
     </div>

@@ -6,24 +6,36 @@ import "./survey/Survey";
 import results from "./survey/results.json";
 let result = "";
 
-function ResultComp({ getClientSurvey }) {
+function ResultComp({ getClientSurvey, prvSection, setShowSurvey }) {
   let [clientResult, setResults] = useState([0, 0, 0, 0]);
-  const back = () => {};
+
   const data = getClientSurvey;
   return (
     <div className="div-result">
       <div className="div-result-in">
         <div className="div-result-in-in">
-          <span className="span-result">התוצאות שהתקבלו:</span> <br />
-          <br />
-          <span className="span-num">{getClientSurvey} </span>
+          <span className="span-result">התוצאות שהתקבלו:</span>
           <br />
           <br />
+          <br />
+          <span className="span-num">{getClientSurvey}</span>
+          <br />
+          <br />
+
           <div className="div-rec">
-            <div>{findTipNum()}</div>
+            <span>{findTipNum()} </span>
           </div>
         </div>
       </div>
+      <button
+        className="button-back"
+        onClick={() => {
+          prvSection();
+          setShowSurvey(true);
+        }}
+      >
+        <BsChevronRight className="arrow" />
+      </button>
     </div>
   );
   function findTipNum() {

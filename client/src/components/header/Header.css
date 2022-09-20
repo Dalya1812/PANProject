@@ -1,9 +1,7 @@
-
 .logoPhoto {
-      height: 100px;
-      width: 150px; 
-    display:flex;
-    flex-wrap: wrap;
-    margin: auto;
-
- }
+  height: 100px;
+  width: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}

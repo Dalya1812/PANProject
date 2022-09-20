@@ -1,6 +1,7 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
+import logo from "../logos/logo.png";
 import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
 
 function NavbarComp() {
   return (
@@ -8,10 +9,10 @@ function NavbarComp() {
       <Container>
         <Navbar.Brand className="nav-brand">
           <img
-            src={require("../../assets/images/logo.png")}
+            src={logo}
             alt="undefined"
-            width="90"
-            height="56.23"
+            width="200.02"
+            height="124.97"
             className="d-inline-block align-top"
           />{" "}
           <span className="nav-span">ארגון רופאים לתזונה</span>

@@ -1,14 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/navbar/navbarComp";
 import Survey from "./components/survey/Survey";
 import Header from "./components/header/Header";
 import QR from "./components/QrCode/qr";
+import NavbarComp from "./components/navbar/navbarComp";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Navbar />
+      <NavbarComp />
       <BrowserRouter>
         <Routes>
           <Route

@@ -15,7 +15,7 @@ export default function Question({ questionData, answerSelected }) {
               name={questionData.question}
               onChange={() => answerSelected(answerData)}
             />
-            <span>{answerData.answer}</span>
+            <span className="span-answer">{answerData.answer}</span>
           </li>
         ))}
       </ul>

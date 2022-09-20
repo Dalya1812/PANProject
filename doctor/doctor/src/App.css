@@ -3,36 +3,482 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  margin-top: 1vmin;
+  padding: 2vmin;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.paragraph {
+  color: #206695;
+  font-family: "Assistant";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
+  font-size: 24px;
+  padding: 0%;
+  margin: 1vmin;
+  margin-top: 5vmin;
+  line-height: 4%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form {
+  align-items: center;
+  justify-content: center;
+  min-width: 100vmin;
+}
+
+.inpt {
+  color: #206695;
+  font-family: "Assistant";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
+  padding-left: 2vmin;
+  margin: 1vmin;
+  display: relative;
+  border: 3px solid #206695;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  min-width: 40vmin;
+  min-height: 10vmin;
+  margin-top: 5vmin;
+  font-size: 25px;
+}
+
+.btn {
+  color: #206695;
+  font-family: "Assistant";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
+  padding: 0%;
+  margin: 1vmin;
+  display: block;
+  border: 1px solid white;
+  border-radius: 30px;
+  align-items: center;
+  justify-content: center;
+  min-width: 20vmin;
+  min-height: 10vmin;
+  margin-left: 45%;
+  margin-top: 10vmin;
+  font-size: 30px;
+}
+
+@font-face {
+  font-family: "Assistant";
+  src: url(./assets/fonts/assistant.regular.ttf);
+}
+
+body {
+  margin: 0;
+  font-family: "Assistant";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap");
+
+.App {
+  background-position: center;
+  background-repeat: repeat-y;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100vh;
+  position: relative;
+  font-family: "Assistant", sans-serif;
+  text-align: center;
+}
+
+/* ----------------------------------------------------------- DoctorTips.js ----------------------------------------------------------- */
+
+.div-DoctorTips {
+  min-width: 2000px;
+}
+
+.div-result {
+  direction: rtl;
+  text-align: right;
+  margin-bottom: 100px;
+}
+
+.div-div-result {
+  width: min-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.div-body {
+  display: flex;
+  align-items: flex-start;
+}
+
+.div-Why-AdditionalFoodGroups {
+  margin-right: 16px;
+}
+
+/* ----------------------------------------------------------- NavbarComp.js ----------------------------------------------------------- */
+
+.nav-result {
+  background-position: center;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 188.99px;
+  padding-top: 15.89px;
+  position: relative;
+}
+
+.nav-brand {
+  color: #206695;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin-top: 24.02px;
+}
+
+.d-inline-block {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-span {
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+li {
+  color: #206695;
+  min-width: 914px;
+  margin-right: 9px;
+}
+
+li span {
+  color: black;
+}
+
+/* ----------------------------------------------------------- Tip.js ----------------------------------------------------------- */
+
+.div-Tip {
+  text-align: right;
+  font: normal normal bold 40px/52px Assistant;
+  letter-spacing: 0px;
+  color: #206695;
+  opacity: 1;
+  margin-right: 138px;
+  padding-right: 8px;
+  margin-top: 8px;
+  width: 1439px;
+}
+
+/* ----------------------------------------------------------- Title.js ----------------------------------------------------------- */
+
+.div-Title {
+  margin-top: 0px;
+  left: 1225px;
+  height: 138px;
+  opacity: 1;
+  margin-right: 137.88px;
+}
+
+.div-Title div {
+  position: relative;
+}
+
+.div-Title img {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 7px;
+}
+
+.div-Title span {
+  text-align: right;
+  font: normal normal bold 80px/105px Assistant;
+  letter-spacing: 0px;
+  color: #206695;
+  opacity: 1;
+  position: absolute;
+  bottom: 6px;
+  width: 100%;
+}
+
+/* ----------------------------------------------------------- MoreHighlights.js ----------------------------------------------------------- */
+
+.div-MoreHighlights {
+  background: #eff9f3 0% 0% no-repeat padding-box;
+  top: 428px;
+  left: 692px;
+  width: 1088px;
+  border-radius: 20px;
+  opacity: 1;
+  margin-right: 140px;
+  margin-top: 24px;
+  max-height: 88px;
+  transition: max-height 0.3s ease-out;
+}
+
+.div-check {
+  background: #eff9f3 0% 0% no-repeat padding-box;
+  top: 428px;
+  left: 692px;
+  width: 1088px;
+  max-height: 800px;
+  border-radius: 20px;
+  opacity: 1;
+  margin-right: 140px;
+  margin-top: 24px;
+  max-height: 800px;
+  transition: max-height 0.3s ease-in;
+}
+
+.div-MoreHighlights div,
+.div-check div {
+  height: 88px;
+  position: relative;
+}
+
+.div-MoreHighlights div span,
+.div-check div span {
+  font: normal normal bold 30px/40px Assistant;
+  letter-spacing: 0px;
+  color: #206695;
+  opacity: 1;
+  margin-right: 60px;
+  position: absolute;
+  height: 50px;
+  margin-top: 24px;
+}
+
+.div-MoreHighlights button,
+.div-check button {
+  width: 50px;
+  height: 50px;
+  transform: matrix(0, 1, -1, 0, 0, 0);
+  background: #eff9f3 0% 0% no-repeat padding-box;
+  border: 3px solid #206695;
+  border-radius: 100%;
+  opacity: 1;
+  position: absolute;
+  left: 24px;
+  margin-top: 19px;
+}
+
+.div-MoreHighlights ul,
+.div-check ul {
+  padding-bottom: 24px;
+  margin-top: 0px;
+  transition: ease-out 0.3s;
+}
+
+.li-MoreHighlights {
+  font: normal normal normal 20px/40px Assistant;
+  margin: 0px 0px 0px 0px;
+  margin-right: -20px;
+  width: 286px;
+}
+
+.arrowDown {
+  transform: rotate(270deg);
+  color: #206695;
+  font-size: 29px;
+  margin-top: 3px;
+  margin-left: 2px;
+  transition: all 0.3s ease-out;
+}
+
+.arrowUp {
+  transform: rotate(450deg);
+  color: #206695;
+  font-size: 29px;
+  margin-top: 3px;
+  margin-left: 2px;
+  transition: all 0.3s ease-out;
+}
+
+/* ----------------------------------------------------------- Why.js ----------------------------------------------------------- */
+
+.div-Why {
+  top: 428px;
+  left: 140px;
+  width: 536px;
+  min-height: 269px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 2px solid #00ba83;
+  border-radius: 20px;
+  opacity: 1;
+  float: left;
+  margin-left: 140px;
+  margin-bottom: 24px;
+}
+
+.div-div-Why {
+  display: flex;
+  flex-direction: column;
+}
+
+.div-div-Why div {
+  font: normal normal bold 30px/40px Assistant;
+  color: #00ba83;
+  margin-top: 24px;
+  margin-right: 24px;
+  height: 40px;
+  padding: 0;
+}
+
+.div-Why img {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 7px;
+}
+
+.div-Why p {
+  width: 488px;
+  min-height: 157px;
+  text-align: right;
+  font: normal normal 600 24px/40px Assistant;
+  letter-spacing: 0px;
+  color: #00ba83;
+  opacity: 1;
+  font-size: 24px;
+  font-weight: 600;
+  margin: auto;
+  margin-top: 24px;
+  font-family: "Assistant", sans-serif;
+}
+
+/* ----------------------------------------------------------- AdditionalFoodGroups.js ----------------------------------------------------------- */
+
+.div-Additional {
+  height: "100%";
+}
+
+.div-AdditionalGroups {
+  font: normal normal bold 30px/40px Assistant;
+  text-align: right;
+  letter-spacing: 0px;
+  color: #206695;
+  opacity: 1;
+  margin-bottom: 0px;
+}
+
+/* ----------------------------------------------------------- FoodGroup.js ----------------------------------------------------------- */
+
+.div-Foods,
+.div-First-Foods {
+  background: #f7fafc 0% 0% no-repeat padding-box;
+  width: 536px;
+  height: 100px;
+  border: 0px;
+  border-radius: 20px;
+  opacity: 1;
+  position: relative;
+}
+
+.div-Foods {
+  margin-top: 16px;
+}
+
+.div-First-Foods {
+  margin-top: 8px;
+}
+
+.div-Foods img,
+.div-First-Foods img {
+  margin-right: 23.78px;
+  float: right;
+}
+
+.div-Foods span,
+.div-First-Foods span {
+  font: normal normal bold 30px/40px Assistant;
+  letter-spacing: 0px;
+  color: #206695;
+  opacity: 1;
+  float: right;
+  right: 117px;
+  position: absolute;
+  top: 28%;
+}
+
+/* ----------------------------------------------------------- Tips.js ----------------------------------------------------------- */
+
+.div-Tips {
+  background: #eff9f3 0% 0% no-repeat padding-box;
+  top: 428px;
+  left: 692px;
+  width: 1088px;
+  min-height: 348px;
+  border-radius: 20px;
+  opacity: 1;
+  margin-right: 140px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.div-div-Tips {
+  height: 35px;
+  margin-top: 27px;
+  margin-right: 24px;
+  position: relative;
+}
+
+.span-Tips {
+  position: absolute;
+  text-align: right;
+  letter-spacing: 0px;
+  color: #206695;
+  opacity: 1;
+  bottom: 0px;
+  margin-right: 12px;
+  font: normal normal bold 30px/40px Assistant;
+}
+
+ul {
+  text-align: right;
+  font: normal normal normal 24px/40px Assistant;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  margin-top: 15px;
+  width: 953px;
+}
+
+.ul-subTip {
+  width: 100%;
+  right: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: circle;
+  padding: 0px 0px 0px 0px;
+  margin-top: 0px;
+  font: normal normal normal 24px/40px Assistant;
+  justify-content: space-between;
+}
+
+.div-subTip {
+  width: 457px;
+  padding-right: 15px;
+  margin: 0px 0px 0px 0px;
+}
+
+.div-subTip li {
+  margin: 0px 0px 0px 0px;
+  font: normal normal normal 20px/40px Assistant;
 }
