@@ -1,0 +1,16 @@
+
+@font-face {
+  font-family: 'Assistant';
+  src: url(./assets/fonts/assistant.regular.ttf);
+}
+body {
+  margin: 0;
+  font-family: 'Assistant';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

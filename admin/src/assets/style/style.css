@@ -1,0 +1,18 @@
+button {
+    background-color: #5465BD;
+    color: white;
+    display: block;
+    margin: 2.5rem;
+    border-radius: 5%;
+    border: none;
+    height: 1.7rem;  
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.firebase-auth-container {
+    margin-top: 10rem;
+}
+
