@@ -1,29 +1,25 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import {LoginPage} from "./pages/login-page"
-
-// import firebase from 'firebase/compat/app';
-// import * as firebaseui from 'firebaseui'
+import { LoginPage } from "./pages/login-page"
+import { UpdatesPage } from './pages/updates-page';
 import "./App.css"
-// import 'firebaseui/dist/firebaseui.css'
 
 
 export function App() {
   return (
 
-    
+
     <div className="App">
-    {/* <p>Hello from root cmp</p> */}
-    <Router>
+      <Router>
         <Routes>
-          <Route path={'login'} element={<LoginPage />} />
+          <Route path={'/login'} element={<LoginPage />} />
+          <Route path={'/update'} element={<UpdatesPage />} />
         </Routes>
       </Router>
-      {/* <GoogleAuthProvider /> */}
-      
+
       {/* <BrowserRouter>
         <Routes>
           {/* <Route path="/" element={<Survey />} /> */}
-        {/* </Routes> */}
+      {/* </Routes> */}
       {/* </BrowserRouter>  */}
     </div>
   );
