@@ -31,3 +31,15 @@ button:hover {
     width: 50rem;
     height: 2rem;
 }
+
+#groups,
+#questions {
+    width: 10rem;
+    padding: 10px; 
+    background:#edf2ff; 
+    border:none;
+}
+
+/* #questions {
+    width: 8rem;
+} */

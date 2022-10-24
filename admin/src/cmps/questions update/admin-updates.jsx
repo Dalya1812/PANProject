@@ -11,16 +11,18 @@ export const Authenticated = (props) => {
         <div className="auth-title">Hello Admin 👋 </div>
 
         <form >
-            <label for="cars">Choose a group : </label>
-            <select id="cars" name="cars">
+            <label for="groups">Choose a group of questions : </label>
+            <select id="groups" >
+                <option >Select a group</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
             </select>
             <br /><br />
-            <label for="cars">Choose a question number : </label>
-            <select id="cars" name="cars">
+            <label for="questions">Choose a question number : </label>
+            <select id="questions">
+                <option >Select a question</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -29,7 +31,7 @@ export const Authenticated = (props) => {
             <button className="validate-btn" onClick={(console.log('hello1'))}>Validate</button>
         </form>
 
-        <input className="input-result" type="text" placeholder="Type your question..."/>
+        <input className="input-result" type="text" placeholder="Type your question..." />
 
         {/* <Multiselect 
         options={this.state.options}
