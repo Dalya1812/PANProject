@@ -31,6 +31,7 @@ export const Authenticated = (props) => {
             <button className="validate-btn" onClick={(console.log('hello1'))}>Validate</button>
         </form>
 
+        <label for="questions">Modify your question here : </label>
         <input className="input-result" type="text" placeholder="Type your question..." />
 
         {/* <Multiselect 

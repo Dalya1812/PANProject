@@ -5,7 +5,7 @@ button {
     margin: 2.5rem;
     border-radius: 5%;
     border: none;
-    height: 1.7rem;  
+    height: 1.7rem;
 }
 
 button:hover {
@@ -28,18 +28,20 @@ button:hover {
 }
 
 .input-result {
-    width: 50rem;
+    transition: width 6s ease-in-out;
     height: 2rem;
 }
+
+.input-result:focus {
+    width: 70%;
+
+}
+
 
 #groups,
 #questions {
     width: 10rem;
-    padding: 10px; 
-    background:#edf2ff; 
-    border:none;
+    padding: 10px;
+    background: #edf2ff;
+    border: none;
 }
-
-/* #questions {
-    width: 8rem;
-} */
