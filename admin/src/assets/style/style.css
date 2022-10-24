@@ -16,3 +16,18 @@ button:hover {
     margin-top: 10rem;
 }
 
+.auth-title {
+    margin: 4rem;
+    font-size: 4rem;
+    text-decoration: dotted;
+}
+
+.validate-btn {
+    text-align: center;
+    margin: 3rem auto;
+}
+
+.input-result {
+    width: 50rem;
+    height: 2rem;
+}
