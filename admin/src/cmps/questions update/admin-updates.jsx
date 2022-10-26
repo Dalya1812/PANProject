@@ -11,7 +11,7 @@ export const Authenticated = (props) => {
         <div className="auth-title">Hello Admin 👋 </div>
 
         <form >
-            <label for="groups">Choose a group of questions : </label>
+            <label className="underligned" for="groups">Choose a group of questions : </label>
             <select id="groups" >
                 <option >Select a group</option>
                 <option value="1">1</option>
@@ -20,7 +20,7 @@ export const Authenticated = (props) => {
                 <option value="4">4</option>
             </select>
             <br /><br />
-            <label for="questions">Choose a question number : </label>
+            <label className="underligned" for="questions">Choose a question number : </label>
             <select id="questions">
                 <option >Select a question</option>
                 <option value="1">1</option>
@@ -31,7 +31,7 @@ export const Authenticated = (props) => {
             <button className="validate-btn" onClick={(console.log('hello1'))}>Validate</button>
         </form>
 
-        <label for="questions">Modify your question here : </label>
+        <label className="underligned" for="questions">Modify your question here : </label>
         <input className="input-result" type="text" placeholder="Type your question..." />
 
         {/* <Multiselect 

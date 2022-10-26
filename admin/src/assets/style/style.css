@@ -1,15 +1,23 @@
+body {
+    /* background-image: url("../images/logo.png") no- ; */
+    
+}
+
 button {
     background-color: #5465BD;
     color: white;
     display: block;
-    margin: 2.5rem;
+    margin: 2rem;
     border-radius: 5%;
     border: none;
-    height: 1.7rem;
+    height: 2rem;
+    width: 5rem;
 }
 
 button:hover {
     cursor: pointer;
+    background-color: blue;
+
 }
 
 .firebase-auth-container {
@@ -17,24 +25,30 @@ button:hover {
 }
 
 .auth-title {
-    margin: 4rem;
+    margin: 2rem;
     font-size: 4rem;
-    text-decoration: dotted;
 }
 
 .validate-btn {
     text-align: center;
-    margin: 3rem auto;
+    margin: 2rem auto;
+}
+
+.validate-btn:hover {
+    background-color: blue;
 }
 
 .input-result {
-    transition: width 6s ease-in-out;
     height: 2rem;
+    margin: 1rem 1rem;
+    padding: 0.5rem;
+    transition: width 6s ease-in-out;
+    border: 0.1px solid black;
+    border-radius: 2%;
 }
 
 .input-result:focus {
     width: 70%;
-
 }
 
 
@@ -44,4 +58,10 @@ button:hover {
     padding: 10px;
     background: #edf2ff;
     border: none;
+    margin: 1rem;
+}
+
+.underligned {
+    border-bottom: solid;
+    margin: 4rem;
 }
