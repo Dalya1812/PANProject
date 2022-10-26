@@ -1,9 +1,9 @@
 // import Multiselect from "multiselect-react-dropdown";
 import React, { useState } from "react";
+import { getDatabase } from "firebase/database";
+import firebase from "firebase/app";
 
-// this.state = {
-//     options: [{name: 'Option 1️⃣', id: 1},{name: 'Option 2️⃣', id: 2}]
-// };
+
 
 
 export const Authenticated = (props) => {
@@ -33,6 +33,8 @@ export const Authenticated = (props) => {
 
         <label className="underligned" for="questions">Modify your question here : </label>
         <input className="input-result" type="text" placeholder="Type your question..." />
+
+        <button>Submit</button>
 
         {/* <Multiselect 
         options={this.state.options}
