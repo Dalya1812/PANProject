@@ -20,6 +20,11 @@ button:hover {
 
 }
 
+.logo-in-admin {
+    width: 5rem;
+    margin: 1rem;
+}
+
 .firebase-auth-container {
     margin-top: 10rem;
 }
@@ -69,3 +74,4 @@ button:hover {
 .form-submit {
     margin: 2rem auto;
 }
+

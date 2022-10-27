@@ -12,10 +12,10 @@ export const UpdatesPage = () => {
 
     return (
         <>
+            <img className="logo-in-admin" src="https://pan-il.org/wp-content/uploads/PAN_Logo_without-text.png" />
             <div className="btn-go-home-container">
                 <button className='btn-go-home' onClick={() => navigate('/login')}>Sign out</button>
             </div>
-            <img className="logo" src="../../../client/src/assets/images/logo.png"/>
             <section className="user-login">
                 <Authenticated />
             </section>
