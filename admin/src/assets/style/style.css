@@ -61,7 +61,11 @@ button:hover {
     margin: 1rem;
 }
 
-.underligned {
+.underlined {
     border-bottom: solid;
     margin: 4rem;
+}
+
+.form-submit {
+    margin: 2rem auto;
 }

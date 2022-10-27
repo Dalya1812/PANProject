@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyAA0IYxpCiN5p1-c1I_uagMVzCGHV8W4-Y",
     authDomain: "admin-page-for-pan-project.firebaseapp.com",
     projectId: "admin-page-for-pan-project",
@@ -14,3 +14,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 export const db = getDatabase(app)
+
+
+
