@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
-import firebase from "firebase/compat/app";
-import { AuthGoogle } from "../../services/auth.google";
-import { onAuthStateChanged } from "firebase/auth";
-import { firebaseConfig } from "../../services/firebase.config";
-// import { Authenticated } from "../questions update/admin-updates";
-// import { BrowserRouter,Route, Routes } from "react-router-dom";
+import React, {useEffect, useState} from "react"
+import firebase from "firebase/compat/app"
+import { AuthGoogle } from "../../services/auth.google"
+import { onAuthStateChanged } from "firebase/auth"
+import { firebaseConfig } from "../../services/firebase.config"
+// import { Authenticated } from "../questions update/admin-updates"
+// import { BrowserRouter,Route, Routes } from "react-router-dom"
 
 export const Login = () => {
 

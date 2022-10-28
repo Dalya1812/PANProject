@@ -1,4 +1,4 @@
-import { Login } from "../cmps/login/admin-login";
+import { Login } from "../cmps/login/admin-login"
 import { useNavigate } from "react-router-dom"
 
 

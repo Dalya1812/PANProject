@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Authenticated } from "../cmps/questions update/admin-updates";
+import { Authenticated } from "../cmps/questions update/admin-updates"
 // import logo from '../../src/assets/images/logo';
 
 
