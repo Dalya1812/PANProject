@@ -21,8 +21,8 @@ button:hover {
 }
 
 .logo-in-admin {
-    width: 5rem;
-    margin: 1rem;
+    width: 8rem;
+    margin: 0.5rem;
 }
 
 .firebase-auth-container {
@@ -31,7 +31,12 @@ button:hover {
 
 .auth-title {
     margin: 2rem;
-    font-size: 4rem;
+    font-size: 3rem;
+}
+
+
+.btn-to-login {
+    margin: 1rem;
 }
 
 .validate-btn {
