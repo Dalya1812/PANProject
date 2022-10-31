@@ -23,9 +23,6 @@ export async function setNewQuestion(number) {
         const dbRef = ref(getDatabase())
         const snapshot = await push(child(dbRef, `${number}/question`))
         alert("Question was updated successfully !")
-        if (!snapshot.exists()) {
-            alert("Please choose a question number !")
-        }
     } catch (error) {
         console.error(error)
     }
