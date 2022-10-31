@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { getQuestionByNumber, numbers } from "../../services/firebase.db"
+import { getQuestionByNumber, numbers, setNewQuestion } from "../../services/firebase.db"
 
-export const Authenticated = (props) => {
+export const Authenticated = () => {
 
     const [selectedNumber, setSelectedNumber] = useState(null);
     const [selectedQuestion, setSelectedQuestion] = useState('');
@@ -17,6 +17,11 @@ export const Authenticated = (props) => {
     const onValidate = async () => {
         const question = await getQuestionByNumber(selectedNumber)
         setSelectedQuestion(question)
+    }
+
+    const onUpdate = async () => {
+        const question = await getQuestionByNumber(selectedNumber)
+        setNewQuestion(question)
     }
 
     const handleSubmit = event => {
@@ -50,7 +55,7 @@ export const Authenticated = (props) => {
                     onChange={onInputChange}
                 />
 
-                <button className="form-submit" type="submit">Submit</button>
+                <button className="form-submit" type="submit" onClick={() => onUpdate()}>Submit</button>
             </form>
 
         </div>
