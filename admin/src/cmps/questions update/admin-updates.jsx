@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { getQuestionByNumber, numbers, setNewQuestion } from "../../services/firebase.db"
+import { getQuestionByNumber, numbers, onUpdateQuestion } from "../../services/firebase.db"
 
 export const Authenticated = () => {
 
@@ -15,18 +15,20 @@ export const Authenticated = () => {
     }
 
     const onValidate = async () => {
-        const question = await getQuestionByNumber(selectedNumber)
-        setSelectedQuestion(question)
+        const questionNumber = await getQuestionByNumber(selectedNumber)
+        setSelectedQuestion(questionNumber)
     }
 
-    const onUpdate = async () => {
-        const question = await getQuestionByNumber(selectedNumber)
-        setNewQuestion(question)
-    }
+    // const setNewQuestion = async () => {
+    //     const questionNumber = await getQuestionByNumber(selectedNumber)
+    //     const updatedQuestion = 1
+    //     onUpdateQuestion(questionNumber, updatedQuestion)
+    // }
 
-    const handleSubmit = event => {
+    const handleSubmit = (event) => {
         event.preventDefault()
         console.log(selectedQuestion)
+        onUpdateQuestion(selectedNumber, selectedQuestion)
     }
 
     return (
@@ -55,7 +57,7 @@ export const Authenticated = () => {
                     onChange={onInputChange}
                 />
 
-                <button className="form-submit" type="submit" onClick={() => onUpdate()}>Submit</button>
+                <button className="form-submit" type="submit" >Submit</button>
             </form>
 
         </div>

@@ -18,10 +18,18 @@ export async function getQuestionByNumber(number) {
 }
 
 
-export async function setNewQuestion(number) {
+export function onUpdateQuestion(number, question) {
     try {
         const dbRef = ref(getDatabase())
-        const snapshot = await push(child(dbRef, `${number}/question`))
+
+        const postData = {
+            question: question,
+        }
+
+        const newPostKey =  push(child(dbRef, `${number}/${question}`)).key
+        const updates = {};
+        updates[newPostKey] = postData;
+        return update(ref(db), updates);
         alert("Question was updated successfully !")
     } catch (error) {
         console.error(error)
