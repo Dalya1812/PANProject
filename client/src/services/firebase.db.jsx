@@ -1,56 +1,30 @@
 import { async } from "@firebase/util"
-import { getDatabase, ref, child, get, push, update, onValue } from "firebase/database"
-
-// export async function getAllDb() {
-//     try {
-//         const dbRef = ref(getDatabase())
-//         const allDb = await get(dbRef);
-//         onValue(allDb, (snapshot) => {
-//             const data = snapshot.val();
-//             if (!snapshot.exists()) {
-//                 alert("Please choose a question number !");
-//             }
-//             console.log("data", data)
-//             return data
-//         })
-//     } catch (error) {
-//         console.error(error);
-//     } 
-// }
-
-export function getAllDb() {
-    const db = getDatabase();
-    const starCountRef = ref(db);
-    onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log("data", data);
-        return data
-    });
-}
+import { getDatabase, ref, child, get, push, update } from "firebase/database"
 
 
 export const numbers = [1, 2, 3, 4, 5, 6, 7, 8]
 
 export async function getQuestionByNumber(number) {
     try {
-        const dbRef = ref(getDatabase())
+        const dbRef = ref(getDatabase());
         const snapshot = await get(child(dbRef, `${number}/question`))
         if (!snapshot.exists()) {
             alert("Please choose a question number !");
         }
-        return snapshot.val()
+        return snapshot.val();
     } catch (error) {
         console.error(error);
     }
 }
 
 export async function getAnswersByNumber(number) {
-    for (var i = 0; i < 5; i++) {
-
+    for ( var i = 0 ; i < 5 ; i++ ) {
+        
         try {
-
+            console.log('I : ', i);
             const dbRef = ref(getDatabase());
             const snapshot = await get(child(dbRef, `${number}/answers/${i}/answer`))
+            console.log('i : ', i);
             if (!snapshot.exists()) {
                 alert("Please choose a question number !");
             }

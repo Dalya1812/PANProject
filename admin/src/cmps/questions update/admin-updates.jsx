@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { getQuestionByNumber, getAnswersByNumber, numbers, onUpdateQuestion } from "../../services/firebase.db"
+import { getQuestionByNumber, getAnswersByNumber, numbers, onUpdateQuestion, getAllDb } from "../../services/firebase.db"
 
 export const Authenticated = () => {
 
@@ -7,6 +7,8 @@ export const Authenticated = () => {
     const [selectedQuestion, setSelectedQuestion] = useState('');
     const [selectedAnswers, setSelectedAnswers] = useState('');
     
+    // const database = getAllDb()
+    // console.log("database", database);
 
     const onSelectChange = (event) => {
         setSelectedNumber(event.target.value)
@@ -62,9 +64,10 @@ export const Authenticated = () => {
                     value={selectedQuestion}
                     onChange={onInputChange}
                 />
+                <br />
 
                 <label className="underlined" htmlFor="input-a">Modify your answers here :</label>
-                
+                <br />
                 <input
                     className="input-result"
                     type="text"
@@ -72,16 +75,8 @@ export const Authenticated = () => {
                     placeholder="Type your question..."
                     value={selectedAnswers}
                     onChange={onInputChange}
-                />
-                 <input
-                    className="input-result"
-                    type="text"
-                    id="input-a"
-                    placeholder="Type your question..."
-                    value={selectedAnswers}
-                    onChange={onInputChange}
-                />
-
+                /> <br />
+                 
                 <button className="form-submit" type="submit" >Submit</button>
             </form>
 
