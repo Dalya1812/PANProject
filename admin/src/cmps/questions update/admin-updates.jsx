@@ -1,10 +1,12 @@
 import React, { useState } from "react"
-import { getQuestionByNumber, numbers, onUpdateQuestion } from "../../services/firebase.db"
+import { getQuestionByNumber, getAnswersByNumber, numbers, onUpdateQuestion } from "../../services/firebase.db"
 
 export const Authenticated = () => {
 
     const [selectedNumber, setSelectedNumber] = useState(null);
     const [selectedQuestion, setSelectedQuestion] = useState('');
+    const [selectedAnswers, setSelectedAnswers] = useState('');
+    
 
     const onSelectChange = (event) => {
         setSelectedNumber(event.target.value)
@@ -12,11 +14,14 @@ export const Authenticated = () => {
 
     const onInputChange = (event) => {
         setSelectedQuestion(event.target.value)
+        setSelectedAnswers(event.target.value)
     }
 
     const onValidate = async () => {
         const questionNumber = await getQuestionByNumber(selectedNumber)
+        const answers = await getAnswersByNumber(selectedNumber)
         setSelectedQuestion(questionNumber)
+        setSelectedAnswers(answers)
     }
 
     // const setNewQuestion = async () => {
@@ -28,7 +33,8 @@ export const Authenticated = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(selectedQuestion)
-        onUpdateQuestion(selectedNumber, selectedQuestion)
+        console.log(selectedAnswers)
+        // onUpdateQuestion(selectedNumber, selectedQuestion)
     }
 
     return (
@@ -47,13 +53,32 @@ export const Authenticated = () => {
                 </select>
                 <button className="validate-btn" onClick={() => onValidate(selectedNumber)}>Validate</button>
 
-                <label className="underlined" htmlFor="input">Modify your question here :</label>
+                <label className="underlined" htmlFor="input-q">Modify your question here :</label>
                 <input
                     className="input-result"
                     type="text"
-                    id="input"
+                    id="input-q"
                     placeholder="Type your question..."
                     value={selectedQuestion}
+                    onChange={onInputChange}
+                />
+
+                <label className="underlined" htmlFor="input-a">Modify your answers here :</label>
+                
+                <input
+                    className="input-result"
+                    type="text"
+                    id="input-a"
+                    placeholder="Type your question..."
+                    value={selectedAnswers}
+                    onChange={onInputChange}
+                />
+                 <input
+                    className="input-result"
+                    type="text"
+                    id="input-a"
+                    placeholder="Type your question..."
+                    value={selectedAnswers}
                     onChange={onInputChange}
                 />
 
