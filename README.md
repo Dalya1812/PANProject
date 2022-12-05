@@ -1,4 +1,5 @@
 ## panProject
+![Banner](https://pan-int.org/wp-content/uploads/PAN-Logo-Horizontal-1024x440-1.png)
 
 A web application designed to monitor the eating habits of patients and provide them with medical advice from a health professional 👨‍⚕️ 👩‍⚕️ 
 
