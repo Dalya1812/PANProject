@@ -7,7 +7,6 @@ export async function getAllDb() {
     try {
         const dbRef = ref(getDatabase())
         const allDb = await get(dbRef);
-        // console.log("allDb", allDb.val());
         if (!allDb.exists()) {
             alert("Please choose a question number !");
         }

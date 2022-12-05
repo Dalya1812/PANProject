@@ -58,7 +58,7 @@ button:hover {
 }
 
 .input-result:focus {
-    width: 70%;
+    width: 50%;
 }
 
 
@@ -80,3 +80,12 @@ button:hover {
     margin: 2rem auto;
 }
 
+
+.label-for-answers {
+    text-decoration: underline dotted;
+    margin: 0.5em;
+}
+
+.input-result-points {
+    width: 2em;
+}
