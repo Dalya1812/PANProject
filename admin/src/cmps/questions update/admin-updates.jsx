@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { getQuestionByNumber, getAnswersByNumber, numbers, onUpdateQuestion, getAllDb } from "../../services/firebase.db"
 
 export const Authenticated = () => {
@@ -6,12 +6,28 @@ export const Authenticated = () => {
     const [selectedNumber, setSelectedNumber] = useState(null);
     const [selectedQuestion, setSelectedQuestion] = useState('');
     const [selectedAnswers, setSelectedAnswers] = useState('');
-    
-    // const database = getAllDb()
-    // console.log("database", database);
+    const [data, setData] = useState('');
+
+
+    useEffect(() => {
+        loadDb()
+    }, [])
+
+
+    const loadDb = async () => {
+        const data = await getAllDb()
+        setData(data)
+        console.table("databaseAdmin", data)
+    }
+
+
 
     const onSelectChange = (event) => {
-        setSelectedNumber(event.target.value)
+        const { value } = event.target
+        setSelectedNumber(value)
+        // console.log("value", value)
+        // console.log("data", data)
+        
     }
 
     const onInputChange = (event) => {
@@ -19,24 +35,23 @@ export const Authenticated = () => {
         setSelectedAnswers(event.target.value)
     }
 
-    const onValidate = async () => {
-        const questionNumber = await getQuestionByNumber(selectedNumber)
-        const answers = await getAnswersByNumber(selectedNumber)
-        setSelectedQuestion(questionNumber)
+    // const onValidate = async () => {
+    //     const question = await getQuestionByNumber(selectedNumber)
+    //     // const answers = await getAnswersByNumber(selectedNumber)
+    //     setSelectedQuestion(question)
+    // }
+    const onValidate = () => {
+        const question = data[selectedNumber].question
+        const answers = data[selectedNumber].answers
+        setSelectedQuestion(question)
         setSelectedAnswers(answers)
     }
 
-    // const setNewQuestion = async () => {
-    //     const questionNumber = await getQuestionByNumber(selectedNumber)
-    //     const updatedQuestion = 1
-    //     onUpdateQuestion(questionNumber, updatedQuestion)
-    // }
 
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(selectedQuestion)
         console.log(selectedAnswers)
-        // onUpdateQuestion(selectedNumber, selectedQuestion)
     }
 
     return (
@@ -76,7 +91,7 @@ export const Authenticated = () => {
                     value={selectedAnswers}
                     onChange={onInputChange}
                 /> <br />
-                 
+
                 <button className="form-submit" type="submit" >Submit</button>
             </form>
 

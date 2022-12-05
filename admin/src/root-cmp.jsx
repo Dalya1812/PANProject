@@ -15,12 +15,6 @@ export function App() {
           <Route path={'/update'} element={<UpdatesPage />} />
         </Routes>
       </Router>
-
-      {/* <BrowserRouter>
-        <Routes>
-          {/* <Route path="/" element={<Survey />} /> */}
-      {/* </Routes> */}
-      {/* </BrowserRouter>  */}
     </div>
   );
 }

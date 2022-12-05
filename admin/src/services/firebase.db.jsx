@@ -1,32 +1,31 @@
 import { async } from "@firebase/util"
 import { getDatabase, ref, child, get, push, update, onValue } from "firebase/database"
 
-// export async function getAllDb() {
-//     try {
-//         const dbRef = ref(getDatabase())
-//         const allDb = await get(dbRef);
-//         onValue(allDb, (snapshot) => {
-//             const data = snapshot.val();
-//             if (!snapshot.exists()) {
-//                 alert("Please choose a question number !");
-//             }
-//             console.log("data", data)
-//             return data
-//         })
-//     } catch (error) {
-//         console.error(error);
-//     } 
-// }
 
-export function getAllDb() {
-    const db = getDatabase();
-    const starCountRef = ref(db);
-    onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        console.log("data", data);
-        return data
-    });
+
+export async function getAllDb() {
+    try {
+        const dbRef = ref(getDatabase())
+        const allDb = await get(dbRef);
+        // console.log("allDb", allDb.val());
+        if (!allDb.exists()) {
+            alert("Please choose a question number !");
+        }
+        return allDb.val()
+    } catch (error) {
+        console.error(error);
+    }
 }
+
+// export function getAllDb() {
+//     const db = getDatabase()
+//     const starCountRef = ref(db)
+//     onValue(starCountRef, (snapshot) => {
+//         const data = snapshot.val();
+//         console.log("data", data);
+//         return data
+//     });
+// }
 
 
 export const numbers = [1, 2, 3, 4, 5, 6, 7, 8]
