@@ -40,8 +40,8 @@ export const Authenticated = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(selectedQuestion);
-    console.log(selectedAnswers);
+    // console.log(selectedQuestion);
+    // console.log(selectedAnswers);
   };
 
   return (
