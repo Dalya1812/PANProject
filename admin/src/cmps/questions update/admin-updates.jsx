@@ -1,47 +1,44 @@
-import React, { useEffect, useState } from "react";
-import {
-
-  numbers,
-  getAllDb,
-} from "../../services/firebase.db";
+import React, { useEffect, useState } from "react"
+import { numbers, getAllDb } from "../../services/firebase.db"
 
 export const Authenticated = () => {
+
   const [selectedNumber, setSelectedNumber] = useState(0);
-  const [selectedQuestion, setSelectedQuestion] = useState("");
-  const [selectedAnswers, setSelectedAnswers] = useState("");
-  const [data, setData] = useState({});
+  const [selectedQuestion, setSelectedQuestion] = useState("")
+  const [selectedAnswers, setSelectedAnswers] = useState("")
+  const [data, setData] = useState({})
 
   useEffect(() => {
-    loadDb();
-  }, []);
+    loadDb()
+  }, [])
 
   const loadDb = async () => {
-    const data = await getAllDb();
-    setData(data);
-    console.table("databaseAdmin", data);
-  };
+    const data = await getAllDb()
+    setData(data)
+    console.table("databaseAdmin", data)
+  }
 
   const onSelectChange = (event) => {
-    const { value } = event.target;
-    setSelectedNumber(value);
-  };
+    const { value } = event.target
+    setSelectedNumber(value)
+  }
 
   const onInputChange = (event) => {
-    setSelectedQuestion(event.target.value);
-    setSelectedAnswers(event.target.value);
-  };
+    setSelectedQuestion(event.target.value)
+    setSelectedAnswers(event.target.value)
+  }
 
   const onValidate = () => {
-    const question = data[selectedNumber].question;
-    const answers = data[selectedNumber].answers;
-    setSelectedQuestion(question);
-    setSelectedAnswers(answers);
+    const question = data[selectedNumber].question
+    const answers = data[selectedNumber].answers
+    setSelectedQuestion(question)
+    setSelectedAnswers(answers)
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(selectedQuestion);
-    // console.log(selectedAnswers);
+    // console.log(selectedQuestion)
+    // console.log(selectedAnswers)
   };
 
   return (
@@ -87,8 +84,8 @@ export const Authenticated = () => {
 
         {selectedNumber &&
           data[selectedNumber].answers.map((obj) => (
-            <section>
-                
+            <section key={obj.points}>
+
               <label htmlFor="input-q" className="label-for-answers">Answer:</label>
               <input
                 className="input-result"
