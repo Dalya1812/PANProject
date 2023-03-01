@@ -14,3 +14,4 @@ A web application designed to monitor the eating habits of patients and provide 
 - [@Dalia William](https://github.com/Dalya1812)
 - [@David Elbaz](https://github.com/DavidELBAZpro)
 - [@Idan Yosef](https://github.com/IdanYosef1)
+- [@Tanya Grudinkina](https://github.com/TanyaGr9191)
