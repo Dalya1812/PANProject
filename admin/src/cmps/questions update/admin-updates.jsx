@@ -1,21 +1,6 @@
 import React, { useEffect, useState } from "react"
-// import { numbers, getAllDb } from "../../services/firebase.db"
 import { getAllDb, onSaveSurvey, removeFromSurvey } from "../../services/firebase.db"
 import { utilService } from '../../services/util.service'
-
-
-// const Input = ({ idx, obj, onInputChange }) => {
-//   return <input
-//     className="input-result"
-//     type="text"
-//     id="input-a"
-//     name={idx}
-//     placeholder="Type your response..."
-//     key={obj.answer}
-//     value={obj.answer}
-//     onChange={onInputChange}
-//   />
-// }
 
 
 export const Authenticated = () => {
@@ -71,7 +56,6 @@ export const Authenticated = () => {
 
   const onAdd = (ev) => {
     ev.preventDefault()
-    // console.log(ev)
     let dataCopy = JSON.parse(JSON.stringify(data))
     const answers = Array.from({ length: 5 }, (_, index) => ({ answer: `${index + 1} הוסף תשובה`, points: 0 }))
 
