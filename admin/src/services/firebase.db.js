@@ -1,10 +1,4 @@
-import firebase from "firebase/compat/app"
-import firebaseConfig from '../firebase.config'
-import { getDatabase, ref, child, get, push, update, onValue, remove } from "firebase/database"
-
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig)
-}
+import { getDatabase, ref, child, get, push, update, remove } from "firebase/database"
 
 export const getAllDb = async () => {
     try {
@@ -38,14 +32,12 @@ export const onSaveSurvey = async (surveyQuestion, selectedNumber) => {
         const dbRef = ref(getDatabase())
         const surveyRef = child(dbRef, `surveyQuestions`)
 
-        console.log('surveyQuestion', surveyQuestion)
         const postData = surveyQuestion.id ?
             { ...surveyQuestion } :
             { ...surveyQuestion, id: push(surveyRef).key }
 
         const updates = {};
         updates[selectedNumber] = postData
-        console.log('updates', updates)
         await update(surveyRef, updates)
 
 

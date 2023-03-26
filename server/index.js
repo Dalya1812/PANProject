@@ -1,9 +1,11 @@
-const express = require("express");
-const cors = require("cors");
-const app = express();
+const PORT = 8000
+
+const express = require("express")
+const cors = require("cors")
+const app = express()
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json())
 
 const surveyRouter = require("./routes/survey");
 app.use("/api/survey", surveyRouter);
@@ -11,5 +13,4 @@ app.use("/api/survey", surveyRouter);
 const foodGroupRouter = require("./routes/foodGroup");
 app.use("/api/foodGroup", foodGroupRouter);
 
-const port = 8000;
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
