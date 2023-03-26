@@ -51,7 +51,6 @@ export const removeFromSurvey = async (id) => {
         const dbRef = ref(getDatabase())
         const surveyRef = child(dbRef, `surveyQuestions/${id}`);
         await remove(surveyRef)
-        console.log("Question was removed successfully from DB!")
     } catch (err) {
         console.log('Could not remove error from DB', err)
     }
