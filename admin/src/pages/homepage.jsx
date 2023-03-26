@@ -1,50 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { signOut, onAuthStateChanged } from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
-import auth from "../services/firebase.config"
-
+import { useAuth } from "../contexts/AuthContext"
 
 const Homepage = () => {
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggenIn] = useState(false)
 
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setIsLoggenIn(true)
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User
-                // ...
-                navigate("/updates")
-            } else {
-                // User is signed out
-                // ...
-                navigate("/")
-            }
-        })
+    const { currentUser, logout } = useAuth()
 
-    }, [navigate])
-
-
-    const handleLogout = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            navigate("/login");
-            setIsLoggenIn(false)
-        }).catch((error) => {
-            // An error happened.
-            console.log('Can\'t signout', error)
-        });
+    const handleLogout = async () => {  
+        try{
+            await logout()
+            navigate("/")
+            console.log("Signed out successfully")
+        } catch (error) {
+            console.error(error)
+            console.log("Couldn't sign out ")
+        }            
     }
 
     return (
         <section>
             <nav>
                 <img className="logo-in-admin" src="https://pan-il.org/wp-content/uploads/PAN_Logo_without-text.png" alt="logo-in-admin"/>
-                <p>Welcome!</p>
-                <p>To edit/update the questions, please Sign In</p>
-                {!isLoggedIn && <button onClick={() => { navigate("/login") }}>Sign In</button>}
-                {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
+                {!currentUser?<p>Welcome!</p>:<p></p>}
+                {!currentUser?<p>To edit/update the questions, please Sign In</p>:<p>To sign out press "Logout"</p>}
+                {!currentUser && <button onClick={() => { navigate("/login") }}>Sign In</button>}
+                {currentUser && <button onClick={handleLogout}>Logout</button>}
             </nav>
         </section>
     )
