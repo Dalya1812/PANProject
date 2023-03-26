@@ -1,6 +1,21 @@
 import React, { useEffect, useState } from "react"
-import { getAllDb, onSaveSurvey, removeFromSurvey } from "../services/firebase.db"
-import { utilService } from '../services/util.service'
+// import { numbers, getAllDb } from "../../services/firebase.db"
+import { getAllDb, onSaveSurvey, removeFromSurvey } from "../../services/firebase.db"
+import { utilService } from '../../services/util.service'
+
+
+// const Input = ({ idx, obj, onInputChange }) => {
+//   return <input
+//     className="input-result"
+//     type="text"
+//     id="input-a"
+//     name={idx}
+//     placeholder="Type your response..."
+//     key={obj.answer}
+//     value={obj.answer}
+//     onChange={onInputChange}
+//   />
+// }
 
 
 export const Authenticated = () => {
@@ -9,7 +24,6 @@ export const Authenticated = () => {
   const [selectedQuestion, setSelectedQuestion] = useState('')
   const [selectedAnswers, setSelectedAnswers] = useState([])
   const [data, setData] = useState([])
-  const [message, setMessage] = useState('')
 
   useEffect(() => {
     loadDb()
@@ -24,14 +38,12 @@ export const Authenticated = () => {
   const onSelectChange = (ev) => {
     const { value } = ev.target
     setSelectedNumber(value)
-    setMessage('Would you like to edit / delete question?')
   }
 
   const onValidate = (ev, selectedNumber) => {
     ev.preventDefault()
     setSelectedQuestion(data[selectedNumber].question)
     setSelectedAnswers(data[selectedNumber].answers)
-    setMessage('')
   }
 
   const onInputChange = (ev) => {
@@ -50,15 +62,16 @@ export const Authenticated = () => {
 
   const onRemove = (ev, selectedNumber) => {
     ev.preventDefault()
-    removeFromSurvey(selectedNumber)
-    setSelectedQuestion([])
-    setSelectedNumber(false)
-    loadDb()
-    setMessage('')
+      console.log('selectedNumber', selectedNumber)
+      removeFromSurvey(selectedNumber)
+      setSelectedQuestion('')
+      setSelectedNumber(false)
+      loadDb()
   }
 
   const onAdd = (ev) => {
     ev.preventDefault()
+    // console.log(ev)
     let dataCopy = JSON.parse(JSON.stringify(data))
     const answers = Array.from({ length: 5 }, (_, index) => ({ answer: `${index + 1} הוסף תשובה`, points: 0 }))
 
@@ -72,7 +85,6 @@ export const Authenticated = () => {
     setSelectedNumber(dataCopy.length - 1)
     setSelectedQuestion(dataCopy[dataCopy.length - 1].question)
     setSelectedAnswers(dataCopy[dataCopy.length - 1].answers)
-    setMessage('')
   }
 
 
@@ -84,11 +96,9 @@ export const Authenticated = () => {
     setData(dataCopy)
     onSaveSurvey(dataCopy[selectedNumber], selectedNumber)
     loadDb()
-    setSelectedNumber(false)
-    setSelectedQuestion('')
-    setMessage('Successfully updated question; to update a different question, please select another question')
   }
 
+  console.log('data', data)
 
 
   if (!data) return <div>Loading...</div>
@@ -110,19 +120,19 @@ export const Authenticated = () => {
             ))}
           </select>
         </div>
-        {message.length > 0 && <span className='message'>{message}</span>}
+
         {selectedNumber &&
           <div className="action">
-            {/* Set Question */}
-            <button onClick={(ev) => onValidate(ev, selectedNumber)}>Edit</button>
+              {/* Set Question */}
+              <button onClick={(ev) => onValidate(ev, selectedNumber)}>Edit</button>
 
-            {/* Delete Question */}
-            <button onClick={(ev) => onRemove(ev, selectedNumber)}>Delete</button>
+              {/* Delete Question */}
+              <button onClick={(ev) => onRemove(ev, selectedNumber)}>Delete</button>
           </div>}
 
       </div>
 
-      {selectedQuestion.length>0 &&
+      {selectedQuestion &&
         <form onSubmit={handleSubmit} className="form-data">
 
           {/* Update question */}
@@ -178,5 +188,5 @@ export const Authenticated = () => {
         </form>}
 
     </div>
-  )
-}
+  );
+};
